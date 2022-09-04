@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AOROR</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="/">AOROR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">돌아가기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/write">도감 쓰기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">도감 조회</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">전체보기</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              더보기
+            </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/write">도감 쓰기</a></li>
+                            <li><a class="dropdown-item" href="/">도감 조회</a></li>
+                            <li><a class="dropdown-item" href="/">전체 보기</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item disabled" href="#">추후 추가예정</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">추가예정</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search" action="/finder" method="post">
+                    <input class="form-control me-2" type="search" placeholder="검색하기" name="searcher" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">S</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <form action="/add" method="post">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="title" id="floatingtitle" placeholder="제목(문제번호)">
+            <label for="floatingtitle">문제번호</label>
+        </div>
+        <select class="form-select form-select-lg mb-3" id="tearbig" onchange="changed()" name="tearbig" aria-label=".form-select-lg example">
+            <option selected disabled>티어</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Ruby">Ruby</option>
+          </select>
+
+        <select class="form-select form-select-sm mb-3" id="tearsmall" name="tearsmall" aria-label=".form-select-sm example" disabled>
+            <option selected disabled>세부 티어</option>
+            <option value="Ⅰ">Ⅰ</option>
+            <option value="Ⅱ">Ⅱ</option>
+            <option value="Ⅲ">Ⅲ</option>
+            <option value="Ⅳ">Ⅳ</option>
+            <option value="Ⅴ">Ⅴ</option>
+          </select>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="textarea1" style="height: 200px;" name="answer"></textarea>
+            <label for="textarea1" class="form-label">문제 풀이</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="textarea2" name="testcase" style="height: 200px;"></textarea>
+            <label for="textarea2" class="form-label">테스트케이스들</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="liveToastBtn">올리기</button>
+    </form>
+    <script>
+        function changed() {
+            $("#tearsmall").attr("disabled", false);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+
+</html>
